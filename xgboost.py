@@ -179,7 +179,6 @@ evaluator = Evaluator(
 )
 print("\nRunning evaluation...")
 evaluator.evaluate(retrieval_fn=wrapped, input_data_format="tabular", batch_size=4048, n_processes=1)
-print("\n--- Evaluation Results (Using Regressors for Classification) ---")
 
 print("\nPrecipitation quantification")
 print(evaluator.get_precip_quantification_results(name="XGBOOST (GMI)").T.to_string())
