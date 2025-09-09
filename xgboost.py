@@ -2,6 +2,7 @@ import numpy as np
 import torch
 import xgboost as xgb
 import optuna
+import random
 from ipwgml.input import GMI
 from ipwgml.target import TargetConfig
 from ipwgml.pytorch.datasets import SPRTabular
@@ -12,6 +13,12 @@ from ipwgml.pytorch import PytorchRetrieval
 import threading
 from joblib import Parallel, delayed
 from sklearn.metrics import mean_squared_error 
+
+SEED = 42
+random.seed(SEED)
+np.random.seed(SEED)
+torch.manual_seed(SEED)
+torch.cuda.manual_seed_all(SEED)
 
 inputs = [GMI(normalize="minmax", nan=-1.5, include_angles=False)]
 target_config = TargetConfig(min_rqi=0.5)
